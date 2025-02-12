@@ -18,7 +18,35 @@
 * Main elements : Agent and Environment
 * Subelements : a policy, a reward signal, a value function, and a model of the environment.
 * A policy defines the learning agent’s way of behaving at a given time i.e. a policy is a mapping from perceived states of the environment to actions to be taken when in those states. Policy may be a simple function or lookup table, it may involve extensive computation such as a search process. policies may deterministic  or may be stochastic.
-* 
+* A reward signal defines the goal in a reinforcement learning problem. On each time step, the environment sends to the reinforcement learning agent a single number, a reward.
+* The agent’s sole objective is to maximize the total reward it receives over the long run. The reward signal thus defines what are the good and bad events for the agent. They are the immediate and defining features of the problem faced by the agent.
+* The reward sent to the agent at any time depends on the agent’s current action and the current state of the agent’s environment. The agent cannot alter the
+process that does this. The only way the agent can influence the reward signal is through its actions, which can have a direct effect on reward, or an indirect effect through changing the environment’s state.
+* In example of Phil eating breakfast, the reinforcement learning agent directing his behavior might receive different reward signals when he eats his breakfast depending on how hungry he is, what mood he is in, and other features of his of his body, which is part of his internal reinforcement learning agent’s environment.
+* The reward signal is the primary basis for altering the policy. If an action selected by the policy is followed by low reward, then the policy may be changed to select
+some other action in that situation in the future.
+* In general, reward signals may be stochastic functions of the state of the environment and the actions taken. Whereas the reward signal indicates what is good in an immediate sense
+* A value function specifies what is good in the long run. Roughly, the value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state. Whereas rewards determine the immediate, intrinsic desirability of environmental states, values indicate the long-term desirability of states after taking into account the states that are likely to follow, and the rewards available in those states.
+* For example, a state might always yield a low immediate reward but still have a high value because it is regularly followed by other states that yield high rewards. Or the reverse
+could be true.
+* To make a human analogy, rewards are somewhat like pleasure (if high) and pain (if low), whereas values correspond to a more refined and farsighted judgment of how pleased or displeased we are that our environment is in a particular state.
+* Rewards are in a sense primary, whereas values, as predictions of rewards,
+are secondary. Without rewards there could be no values, and the only purpose
+of estimating values is to achieve more reward. Nevertheless, it is values with
+which we are most concerned when making and evaluating decisions. Action
+choices are made based on value judgments. We seek actions that bring about
+states of highest value, not highest reward, because these actions obtain the
+greatest amount of reward for us over the long run. In decision-making and
+planning, the derived quantity called value is the one with which we are most
+concerned. Unfortunately, it is much harder to determine values than it is to
+determine rewards. Rewards are basically given directly by the environment,
+but values must be estimated and re-estimated from the sequences of observations an agent makes over its entire lifetime. In fact, the most important
+component of almost all reinforcement learning algorithms we consider is a
+method for efficiently estimating values. The central role of value estimation
+is arguably the most important thing we have learned about reinforcement
+learning over the last few decades.
+
+
 ### 1.4 Limitations and Scope 
 * Most of the reinforcement learning methods are structured around estimating value functions, but it is not strictly necessary to do this to solve reinforcement learning problems. 
 For example, methods such as genetic algorithms, genetic programming, simulated annealing, and other optimization methods have been used to approach reinforcement learning problems
