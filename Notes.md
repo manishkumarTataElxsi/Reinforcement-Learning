@@ -30,23 +30,20 @@ some other action in that situation in the future.
 * For example, a state might always yield a low immediate reward but still have a high value because it is regularly followed by other states that yield high rewards. Or the reverse
 could be true.
 * To make a human analogy, rewards are somewhat like pleasure (if high) and pain (if low), whereas values correspond to a more refined and farsighted judgment of how pleased or displeased we are that our environment is in a particular state.
-* Rewards are in a sense primary, whereas values, as predictions of rewards,
-are secondary. Without rewards there could be no values, and the only purpose
-of estimating values is to achieve more reward. Nevertheless, it is values with
-which we are most concerned when making and evaluating decisions. Action
-choices are made based on value judgments. We seek actions that bring about
-states of highest value, not highest reward, because these actions obtain the
-greatest amount of reward for us over the long run. In decision-making and
-planning, the derived quantity called value is the one with which we are most
-concerned. Unfortunately, it is much harder to determine values than it is to
-determine rewards. Rewards are basically given directly by the environment,
-but values must be estimated and re-estimated from the sequences of observations an agent makes over its entire lifetime. In fact, the most important
-component of almost all reinforcement learning algorithms we consider is a
-method for efficiently estimating values. The central role of value estimation
-is arguably the most important thing we have learned about reinforcement
-learning over the last few decades.
-
-
+* Rewards are in a sense primary, whereas values, as predictions of rewards, are secondary. Without rewards there could be no values, and the only purpose of estimating values is to achieve more reward. Nevertheless, it is values with which we are most concerned when making and evaluating decisions.
+* Action choices are made based on value judgments. We seek actions that bring about states of highest value, not highest reward, because these actions obtain the greatest amount of reward for us over the long run.
+* In decision-making and planning, the derived quantity called value is the one with which we are most concerned. Unfortunately, it is much harder to determine values than it is to
+determine rewards.
+* Rewards are basically given directly by the environment, but values must be estimated and re-estimated from the sequences of observations an agent makes over its entire lifetime.
+* In fact, the most important component of almost all reinforcement learning algorithms we consider is a method for efficiently estimating values.
+* The central role of value estimation is arguably the most important thing in reinforcement learning.
+* A model of the environment is something that mimics the behavior of the environment, or more generally, that allows inferences to be made about how the environment will behave.
+* For example, given a state and action, the model might predict the resultant next state and next reward.
+* Models are used for planning, by which we mean any way of deciding on a course of action by considering possible future situations before they are actually experienced.
+* Methods for solving reinforcement learning problems that use models and planning are called model-based methods, as opposed to simpler model free methods that are explicitly trial-and-error learners—viewed as almost the opposite of planning.
+* In Chapter 9 we explore reinforcement learning systems that simultaneously learn by trial and error, learn a model of the environment, and use the model for planning.
+* Modern reinforcement learning spans the spectrum from low-level, trial-and-error learning to high-level, deliberative planning.
+  
 ### 1.4 Limitations and Scope 
 * Most of the reinforcement learning methods are structured around estimating value functions, but it is not strictly necessary to do this to solve reinforcement learning problems. 
 For example, methods such as genetic algorithms, genetic programming, simulated annealing, and other optimization methods have been used to approach reinforcement learning problems
@@ -77,6 +74,7 @@ it receives. Many factors can prevent it from achieving the maximum, even if
 one exists. In other words, optimization is not the same a optimality.
 
 ### 1.5 An Extended Example: Tic-Tac-Toe 
+
 ### 1.6 Summary   
 * Reinforcement learning is a computational approach to understanding and automating goal-directed learning and decision-making.
 * It is distinguished from other computational approaches by its emphasis on learning by an agent from direct interaction with its environment, without relying on exemplary supervision or complete models of the environment.
@@ -167,7 +165,8 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 
 # II Approximate Solution Methods 
 
-## 9 On-policy Approximation of Action Values
+## 9 On-policy Approximation of Action Values(reinforcement learning systems that simultaneously learn by trial and error, learn a model of the environment, and use the model for planning)
+
 ### 9.1 Value Prediction with Function Approximation 
 ### 9.2 Gradient-Descent Methods
 ### 9.3 Linear Methods 
