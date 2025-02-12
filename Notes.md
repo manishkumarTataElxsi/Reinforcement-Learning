@@ -17,8 +17,8 @@
 ### 1.3 Elements of Reinforcement Learning
 * Main elements : Agent and Environment
 * Subelements : a policy, a reward signal, a value function, and a model of the environment.
-* A policy defines the learning agent’s way of behaving at a given time i.e. a policy is a mapping from perceived states of the environment to actions to be taken when in those states. Policy may be a simple function or lookup table, it may involve extensive computation such as a search process. policies may deterministic  or may be stochastic.
-* A reward signal defines the goal in a reinforcement learning problem. On each time step, the environment sends to the reinforcement learning agent a single number, a reward.
+* A **policy** defines the learning agent’s way of behaving at a given time i.e. a policy is a mapping from perceived states of the environment to actions to be taken when in those states. Policy may be a simple function or lookup table, it may involve extensive computation such as a search process. policies may deterministic  or may be stochastic.
+* A **reward** signal defines the goal in a reinforcement learning problem. On each time step, the environment sends to the reinforcement learning agent a single number, a reward.
 * The agent’s sole objective is to maximize the total reward it receives over the long run. The reward signal thus defines what are the good and bad events for the agent. They are the immediate and defining features of the problem faced by the agent.
 * The reward sent to the agent at any time depends on the agent’s current action and the current state of the agent’s environment. The agent cannot alter the
 process that does this. The only way the agent can influence the reward signal is through its actions, which can have a direct effect on reward, or an indirect effect through changing the environment’s state.
@@ -26,7 +26,7 @@ process that does this. The only way the agent can influence the reward signal i
 * The reward signal is the primary basis for altering the policy. If an action selected by the policy is followed by low reward, then the policy may be changed to select
 some other action in that situation in the future.
 * In general, reward signals may be stochastic functions of the state of the environment and the actions taken. Whereas the reward signal indicates what is good in an immediate sense
-* A value function specifies what is good in the long run. Roughly, the value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state. Whereas rewards determine the immediate, intrinsic desirability of environmental states, values indicate the long-term desirability of states after taking into account the states that are likely to follow, and the rewards available in those states.
+* A **value function** specifies what is good in the long run. Roughly, the value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state. Whereas rewards determine the immediate, intrinsic desirability of environmental states, values indicate the long-term desirability of states after taking into account the states that are likely to follow, and the rewards available in those states.
 * For example, a state might always yield a low immediate reward but still have a high value because it is regularly followed by other states that yield high rewards. Or the reverse
 could be true.
 * To make a human analogy, rewards are somewhat like pleasure (if high) and pain (if low), whereas values correspond to a more refined and farsighted judgment of how pleased or displeased we are that our environment is in a particular state.
@@ -37,7 +37,7 @@ determine rewards.
 * Rewards are basically given directly by the environment, but values must be estimated and re-estimated from the sequences of observations an agent makes over its entire lifetime.
 * In fact, the most important component of almost all reinforcement learning algorithms we consider is a method for efficiently estimating values.
 * The central role of value estimation is arguably the most important thing in reinforcement learning.
-* A model of the environment is something that mimics the behavior of the environment, or more generally, that allows inferences to be made about how the environment will behave.
+* A **model of the environment** is something that mimics the behavior of the environment, or more generally, that allows inferences to be made about how the environment will behave.
 * For example, given a state and action, the model might predict the resultant next state and next reward.
 * Models are used for planning, by which we mean any way of deciding on a course of action by considering possible future situations before they are actually experienced.
 * Methods for solving reinforcement learning problems that use models and planning are called model-based methods, as opposed to simpler model free methods that are explicitly trial-and-error learners—viewed as almost the opposite of planning.
@@ -85,7 +85,11 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 
 
 # I Tabular Solution Methods 
+* The core ideas of reinforcement learning algorithms in their simplest forms, that in which the **state and action spaces are small enough** for the approximate action-value function to be represented as **an array, or table**.
+* These methods can often find **exact solutions**, that is, they can often find exactly the optimal value function and the optimal policy.
+* 
 ## 2 Multi-arm Bandits 
+*  Solution methods for the special of the reinforcement learning problem in which there is only a single state, called bandit problems
 ### 2.1 An n-Armed Bandit Problem 
 ### 2.2 Action-Value Methods 
 ### 2.3 Incremental Implementation
@@ -164,7 +168,8 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 ### 8.9 Summary 
 
 # II Approximate Solution Methods 
-
+*  The approximate methods only find approximate solutions, but which in return can be applied effectively to much larger problems.
+*  
 ## 9 On-policy Approximation of Action Values(reinforcement learning systems that simultaneously learn by trial and error, learn a model of the environment, and use the model for planning)
 
 ### 9.1 Value Prediction with Function Approximation 
