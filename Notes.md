@@ -96,7 +96,10 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 *  In their pure forms, these two kinds of feedback are quite distinct: evaluative feedback depends entirely on the action taken, whereas instructive feedback is
 independent of the action taken.
 * There are also interesting intermediate cases in which evaluation and instruction blend together.
-* The evaluative aspect of reinforcement learning in a simplified setting, one that does not involve learning to act in more than one situation.
+* We will learn evaluative aspect of reinforcement learning in a simplified setting, one that does not involve learning to act in more than one situation. This **nonassociative** setting is the one in which most prior work involving evaluative feedback has been done, and it avoids much of the complexity of the full reinforcement learning problem. This case will
+enable us to see most clearly how evaluative feedback differs from, and yet can be combined with, instructive feedback.
+* The particular **nonassociative, evaluative feedback problem** that we explore is a **simple version of the n-armed bandit problem**. We use this problem to introduce a number of basic learning methods which we extend to the **full reinforcement learning problem**.
+* What happens when the bandit problem becomes associative, that is, when actions are taken in more than one situation?
 
 ### 2.1 An n-Armed Bandit Problem 
 ### 2.2 Action-Value Methods 
