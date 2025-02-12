@@ -90,6 +90,14 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 * 
 ## 2 Multi-arm Bandits 
 *  Solution methods for the special of the reinforcement learning problem in which there is only a single state, called bandit problems
+*  Reinforcement learning is different from other types of learning because it uses training information that evaluates the actions taken rather than instructs by giving correct actions. That's why we need for active exploration, for an explicit trial-and-error search for good behavior.
+*  Purely **evaluative feedback** indicates how good the action taken is, but not whether it is the best or the worst action possible. Evaluative feedback is the basis of methods for function optimization, including evolutionary methods.
+*  Purely **instructive feedback**, on the other hand, indicates the correct action to take, independently of the action actually taken. This kind of feedback is the basis of supervised learning, which includes large parts of pattern classification, artificial neural networks, and system identification.
+*  In their pure forms, these two kinds of feedback are quite distinct: evaluative feedback depends entirely on the action taken, whereas instructive feedback is
+independent of the action taken.
+* There are also interesting intermediate cases in which evaluation and instruction blend together.
+* The evaluative aspect of reinforcement learning in a simplified setting, one that does not involve learning to act in more than one situation.
+
 ### 2.1 An n-Armed Bandit Problem 
 ### 2.2 Action-Value Methods 
 ### 2.3 Incremental Implementation
@@ -101,7 +109,8 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 ### 2.9 Summary
 
 ## 3 Finite Markov Decision Processes (RL problems in terms of optimal control of Markov decision processes)
-
+* The general problem formulation that is—**finite markov decision processes**—and its main ideas including Bellman equations and value functions.
+* 
 ### 3.1 The Agent–Environment Interface 
 ###  3.2 Goals and Rewards
 ### 3.3 Returns 
@@ -114,6 +123,9 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 ### 3.10 Summary 
 
 ## 4 Dynamic Programming 
+* method for solving finite Markov decision problems
+* Dynamic programming methods are well developed mathematically, but **require a complete and accurate model of the environment**.
+* 
 ### 4.1 Policy Evaluation 
 ### 4.2 Policy Improvement 
 ### 4.3 Policy Iteration 
@@ -124,6 +136,8 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 ### 4.8 Summary 
 
 ## 5 Monte Carlo Methods 
+* method for solving finite Markov decision problems.
+* Monte Carlo methods don’t require a model **(no model)** and are conceptually simple, but are not suited for step-by-step incremental computation **(not incremental)**.
 ### 5.1 Monte Carlo Prediction
 ### 5.2 Monte Carlo Estimation of Action Values 
 ### 5.3 Monte Carlo Control 
@@ -135,6 +149,8 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 ### 5.9 Summary
 
 ## 6 Temporal-Difference Learning 
+* method for solving finite Markov decision problems
+* Temporal-difference methods require **no model** and are **fully incremental**, but are more **complex** to analyze. 
 ### 6.1 TD Prediction 
 ### 6.2 Advantages of TD Prediction Methods 
 ### 6.3 Optimality of TD(0) 
@@ -143,7 +159,11 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 ### 6.6 Games, Afterstates, and Other Special Cases
 ### 6.7 Summary
 
+##### NOTE : DP, MC, TD methods are differ swith respect to their efficiency and speed of convergence.
+
 ## 7 Eligibility Traces 
+* Describe how DP, MC, TD methods can be combined to obtain the best features of each of them.
+* Describe how the strengths of Monte Carlo methods can be combined with the strengths of temporal-difference methods via the use of eligibility traces. 
 ### 7.1 n-Step TD Prediction
 ### 7.2 The Forward View of TD(λ) 
 ### 7.3 The Backward View of TD(λ) 
@@ -155,7 +175,10 @@ of policies. Their use of value functions distinguishes reinforcement learning m
 ### 7.9 Variable λ 
 ### 7.10 Conclusions 
 
-## 8 Planning and Learning with Tabular Methods 195
+## 8 Planning and Learning with Tabular Methods 
+* Describe how DP, MC, TD methods can be combined to obtain the best features of each of them.
+* We will see how MC, TD learning methods can be combined with model learning and planning methods (such as dynamic programming) for a complete and unified solution to the tabular reinforcement learning problem.
+* 
 ### 8.1 Models and Planning 
 ### 8.2 Integrating Planning, Acting, and Learning 
 ### 8.3 When the Model Is Wrong 
