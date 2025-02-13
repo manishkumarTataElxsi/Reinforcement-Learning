@@ -106,11 +106,18 @@ enable us to see most clearly how evaluative feedback differs from, and yet can 
 * methods for estimating the values of actions and for using the estimates to make action selection decisions.
 * Let true (actual) value of action a = **q(a)**,
   
-   and the estimated value on the t-th time step = **Q<sub>t** (a)
+   and the estimated value on the t-th time step = **Q<sub>t</sub>(a)**
   
    As the true value of an action is the **mean reward received when that action is selected**. One natural way to estimate this is by **averaging the rewards actually received when the action was selected**.
   
-   In other words, if by the t-th time step action a has been chosen N<sub>t (a) times prior to t, yielding rewards R1, R2, . . . , RNt(a), then its value is estimated to be Qt(a) = R1 + R2 + · · · + RNt(a) /Nt(a).
+   In other words, if by the t-th time step action a has been chosen **N<sub>t</sub>(a)** times prior to **t**, yielding rewards **R1, R2, . . . , R<sub>N <sub>t</sub> (a)</sub>**, then its value is estimated to be **Q<sub>t</sub>(a) = R1 + R2 + · · · +  R<sub>N <sub>t</sub> (a)</sub> /N<sub>t</sub>(a)**.
+* If **N<sub>t</sub>(a) = 0**, then we define Q<sub>t</sub>(a) instead as some default value, such as Q<sub>1</sub>(a) = 0. As N<sub>t</sub>(a) → ∞, by the law of large numbers, Q<sub>t</sub>(a) converges to q(a).
+* We call this the **sample-average method** for estimating action values because each estimate is a **simple average** of the sample of relevant rewards.**(not necessarily the best method)**.
+* Nevertheless, for now let us stay with this simple estimation method and turn to the question of **how the estimates might be used to select actions?**.
+* The simplest **action selection rule** is to select the action (or one of the actions) with **highest estimated action value**, that is, to select at step t one of the greedy actions, **A<sup>*</sup><sub>t</sub>**, for which
+                                                             **Q<sub>t</sub>(A<sup>∗</sup><sub>t</sub>) = max<sub>a</sub> Q<sub>t</sub>(a)**.
+This **greedy action selection method** can be written as
+                                                             **A<sub>t</sub> = argmax<sub>a</sub> Q<sub>t</sub>(a)**
 ### 2.3 Incremental Implementation
 ### 2.4 Tracking a Nonstationary Problem
 ### 2.5 Optimistic Initial Values 
