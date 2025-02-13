@@ -115,9 +115,18 @@ enable us to see most clearly how evaluative feedback differs from, and yet can 
 * We call this the **sample-average method** for estimating action values because each estimate is a **simple average** of the sample of relevant rewards.**(not necessarily the best method)**.
 * Nevertheless, for now let us stay with this simple estimation method and turn to the question of **how the estimates might be used to select actions?**.
 * The simplest **action selection rule** is to select the action (or one of the actions) with **highest estimated action value**, that is, to select at step t one of the greedy actions, **A<sup>*</sup><sub>t</sub>**, for which
-                                                             **Q<sub>t</sub>(A<sup>∗</sup><sub>t</sub>) = max<sub>a</sub> Q<sub>t</sub>(a)**.
+  
+  <div align="center"> 
+    Q<sub>t</sub>(A<sup>∗</sup><sub>t</sub>) = max<sub>a</sub> Q<sub>t</sub>(a)
+  </div>.
+
 This **greedy action selection method** can be written as
-                                                             **A<sub>t</sub> = argmax<sub>a</sub> Q<sub>t</sub>(a)**
+  <div align="center"> 
+    A<sub>t</sub> = argmax<sub>a</sub> Q<sub>t</sub>(a)
+  </div>
+
+* **Greedy action selection** always exploits current knowledge to maximize immediate reward; it spends no time at all sampling apparently inferior actions to see if they might really be better.
+* A simple alternative is to behave greedily most of the time, but every once in a while, say with small probability **ε**, instead to select randomly from amongst all the actions with equal probability independently of the action value estimates. We call methods using this near-greedy action selection rule **ε-greedy methods**. An advantage of these methods is that, in the limit as the number of plays increases, every action will be sampled an infinite number of times, guaranteeing that N<sub>t</sub>(a) → ∞ for all a, and thus ensuring that all the Q<sub>t</sub>(a) converge to q(a). This of course implies that the probability of selecting the optimal action converges to greater than **1 − ε** , that is, to near certainty. These are just asymptotic guarantees, however, and say little about the practical effectiveness of the methods
 ### 2.3 Incremental Implementation
 ### 2.4 Tracking a Nonstationary Problem
 ### 2.5 Optimistic Initial Values 
