@@ -103,6 +103,14 @@ enable us to see most clearly how evaluative feedback differs from, and yet can 
 
 ### 2.1 An n-Armed Bandit Problem 
 ### 2.2 Action-Value Methods 
+* methods for estimating the values of actions and for using the estimates to make action selection decisions.
+* Let true (actual) value of action a = **q(a)**,
+  
+   and the estimated value on the t-th time step = **Q<sub>t** (a)
+  
+   As the true value of an action is the **mean reward received when that action is selected**. One natural way to estimate this is by **averaging the rewards actually received when the action was selected**.
+  
+   In other words, if by the t-th time step action a has been chosen N<sub>t (a) times prior to t, yielding rewards R1, R2, . . . , RNt(a), then its value is estimated to be Qt(a) = R1 + R2 + · · · + RNt(a) /Nt(a).
 ### 2.3 Incremental Implementation
 ### 2.4 Tracking a Nonstationary Problem
 ### 2.5 Optimistic Initial Values 
