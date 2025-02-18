@@ -167,6 +167,15 @@ broken randomly. An alternative that has a similar effect is to add a verysmall 
 ### 2.5 Optimistic Initial Values 
 ### 2.6 Upper-Confidence-Bound Action Selection
 ### 2.7 Gradient Bandits
+* We have seen methods that estimate action values and use those estimates to select actions.(a good approach, but it is not the only one possible.)
+* Now, we consider learning a numerical preference **H<sub>t</sub>(a)** for each action a.
+
+  The larger the preference, the more often that action is taken, but the preference has no interpretation in terms of reward.
+
+  Only the relative preference of one action over another is important; if we add 1000 to all the preferences there is no affect on the action probabilities, which are determined 
+  according to a soft-max distribution (i.e., Gibbs or Boltzmann distribution) as follows:
+
+
 ### 2.8 Associative Search (Contextual Bandits)
 * Nonassociative tasks, in which there is no need to associate different actions with different situations. In these tasks the learner either tries to find a single best action when the task is stationary, or tries to track the best action as it changes over time when the task is nonstationary.
 * In a general reinforcement learning task there is more than one situation, and the goal is to learn a policy: a mapping from situations to the actions that are best in those situations.
@@ -180,8 +189,13 @@ broken randomly. An alternative that has a similar effect is to add a verysmall 
 
   Now suppose, however, that when a bandit task is selected for us, we are given some distinctive clue about its identity (but not its action values). Maybe we are facing an actual 
   slot machine that changes the color of its display as it changes its action values. Now you can learn a policy associating each task, signaled by the color you see, with the best 
-  action to take when facing that task—for instance, if red, play arm 1; if green, play arm 2. With the right policy you can usually do much better than you could in the absence of any 
-  information distinguishing one bandit task from another
+  action to take when facing that task—for instance, if red, play arm 1; if green, play arm 2. With the right policy we can usually do much better than we could in the absence of any 
+  information distinguishing one bandit task from another.
+
+* This is **an example of an associative search task**, so called because **it involves both trial-and-error learning in the form of search for the best actions and association of these actions with the situations in which they are best**(Associative search tasks are often now termed contextual bandits in the literature).
+* Associative search tasks are intermediate between the n-armed bandit problem and the full reinforcement learning problem. They are like the full reinforcement learning problem in that they involve learning a policy, but like our version of the n-armed bandit problem in that each action affects only the immediate reward. If actions are allowed to affect the next situation as well as the reward, then we have the full reinforcement learning problem.
+* 
+  
   
 ### 2.9 Summary
 
