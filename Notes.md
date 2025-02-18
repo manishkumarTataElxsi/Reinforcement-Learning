@@ -168,6 +168,21 @@ broken randomly. An alternative that has a similar effect is to add a verysmall 
 ### 2.6 Upper-Confidence-Bound Action Selection
 ### 2.7 Gradient Bandits
 ### 2.8 Associative Search (Contextual Bandits)
+* Nonassociative tasks, in which there is no need to associate different actions with different situations. In these tasks the learner either tries to find a single best action when the task is stationary, or tries to track the best action as it changes over time when the task is nonstationary.
+* In a general reinforcement learning task there is more than one situation, and the goal is to learn a policy: a mapping from situations to the actions that are best in those situations.
+* To extend nonassociative tasks into the associative setting:
+  
+  Example:
+
+  Suppose there are several different n-armed bandit tasks, and that on each play you confront one of these chosen at random. Thus, the bandit task changes randomly from play 
+  to play. This would appear to us as a single, nonstationary n-armed bandit task whose true action values change randomly from play to play. We could try using one of the methods 
+  that can handle nonstationarity, but unless the true action values change slowly, these methods will not work very well.
+
+  Now suppose, however, that when a bandit task is selected for us, we are given some distinctive clue about its identity (but not its action values). Maybe we are facing an actual 
+  slot machine that changes the color of its display as it changes its action values. Now you can learn a policy associating each task, signaled by the color you see, with the best 
+  action to take when facing that task—for instance, if red, play arm 1; if green, play arm 2. With the right policy you can usually do much better than you could in the absence of any 
+  information distinguishing one bandit task from another
+  
 ### 2.9 Summary
 
 ## 3 Finite Markov Decision Processes (RL problems in terms of optimal control of Markov decision processes)
