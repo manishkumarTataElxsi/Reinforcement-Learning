@@ -159,7 +159,9 @@ broken randomly. An alternative that has a similar effect is to add a verysmall 
 * For example, suppose the bandit task were nonstationary, that is, that the true values of the actions changed over time. In this case exploration is needed even in the deterministic case to make sure one of the nongreedy actions has not changed to become better than the greedy one. As we will see in the next few chapters, **effective nonstationarity is the case most commonly encountered in reinforcement learning**. Even if the underlying task is stationary and deterministic, the learner faces a set of banditlike decision tasks each of which changes over time due to the learning process itself. Reinforcement learning requires a balance between exploration and exploitation.
   
 ### 2.3 Incremental Implementation
-The action-value methods we have discussed so far all estimate action values as sample averages of observed rewards. The obvious implementation is to
+* As all estimate action values are sample averages of observed rewards. 
+* The obvious implementation is to maintain  for each action a, a record of all the rewards that have followed the selection of that action.
+*  Then, when the estimate of the value of action a is needed at time t, it can be computed according to (2.1), which we repeat here:
 
 ### 2.4 Tracking a Nonstationary Problem
 ### 2.5 Optimistic Initial Values 
