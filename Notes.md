@@ -212,6 +212,34 @@ broken randomly. An alternative that has a similar effect is to add a verysmall 
 ### 3.8 Optimal Value Functions 
 ### 3.9 Optimality and Approximation 
 ### 3.10 Summary 
+* The elements of the reinforcement learning problem:
+* Reinforcement learning is about learning from interaction how to behave in order to achieve a goal.
+* The reinforcement learning agent and its environment interact over a sequence of discrete time steps.
+* The specification of their interface defines a particular task:
+  * the actions are the choices made by the agent;
+  * the states are the basis for making the choices;
+  * and the rewards are the basis for evaluating the choices.
+* Everything inside the agent is completely known and controllable by the agent; everything outside is incompletely controllable but may or may not be completely known.
+* A policy is a stochastic rule by which the agent selects actions as a function of states.
+* The agent’s objective is to maximize the amount of reward it receives over time.
+* The return is the function of future rewards that the agent seeks to maximize. It has several different definitions depending upon the nature of the task and whether one wishes to discount delayed reward.
+* The undiscounted formulation is appropriate for episodic tasks, in which the agent–environment interaction breaks naturally into episodes; the discounted formulation is appropriate for continuing tasks, in which the interaction does not naturally break into episodes but continues without limit.
+* An environment satisfies the Markov property if its state signal compactly summarizes the past without degrading the ability to predict the future. This is rarely exactly true, but often nearly so; the state signal should be chosen or constructed so that the Markov property holds as nearly as possible. We assume that this has already been done and focus on the decision making problem: how to decide what to do as a function of whatever state signal is available.
+* If the Markov property does hold, then the environment is called a **Markov decision process (MDP)**.
+* A finite MDP is an MDP with finite state and action sets. Most of the current theory of reinforcement learning is restricted to finite MDPs, but the methods and ideas apply more
+generally.
+* A policy’s value functions assign to each state, or state–action pair, the expected return from that state, or state–action pair, given that the agent uses the policy.
+* The optimal value functions assign to each state, or state–action pair, the largest expected return achievable by any policy.
+* A policy whose value functions are optimal is an **optimal policy**. Whereas the **optimal value functions for states and state–action pairs are unique for a given MDP**, there can be many optimal policies.
+* Any policy that is greedy with respect to the optimal value functions **must be an optimal policy**.
+* The **Bellman optimality equations are special consistency condition** that the optimal value functions must satisfy and that can, in principle, be solved for the optimal value functions, from which an optimal policy can be determined with relative ease.
+* A reinforcement learning problem can be posed in a variety of different ways depending on assumptions about the level of knowledge initially available to the agent.
+* In problems of complete knowledge, the agent has a complete and accurate model of the environment’s dynamics. If the environment is an MDP, then such a model consists of the one-step transition probabilities and expected rewards for all states and their allowable actions.
+* In problems of incomplete knowledge, a complete and perfect model of the environment is not available.
+* Even if the agent has a complete and accurate environment model, the agent is typically unable to perform enough computation per time step to fully use it.
+* The memory available is also an important constraint. Memory may be required to build up accurate approximations of value functions, policies, and models. In most cases of practical interest there are far more states than could possibly be entries in a table, and approximations must be made.
+* A well-defined notion of optimality organizes the approach to learning and provides a way to understand the theoretical properties of various learning algorithms, but it is an ideal that reinforcement learning agents can only approximate to varying degrees.
+* In reinforcement learning we are very much concerned with cases in which optimal solutions cannot be found but must be approximated in some way.
 
 ## 4 Dynamic Programming 
 * method for solving finite Markov decision problems
