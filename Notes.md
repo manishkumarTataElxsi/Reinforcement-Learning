@@ -253,10 +253,37 @@ generally.
 ### 4.6 Generalized Policy Iteration 
 ### 4.7 Efficiency of Dynamic Programming 
 ### 4.8 Summary 
+* The basic ideas and algorithms of **dynamic programming** as they relate **to solving finite MDPs**.
+* **Policy evaluation** refers to the (typically) **iterative computation of the value functions for a given policy**.
+* **Policy improvement** refers to the **computation of an improved policy given the value function for that policy**.
+* **Policy iteration/Value iteration  = Policy evaluation + Policy improvement**  (two most popular DP methods)
+*  **Policy iteration/Value iteration** can be used to reliably **compute optimal policies and value functions for finite MDPs** given complete knowledge of the MDP.
+* **Classical DP** methods operate in **sweeps through the state set**, performing a full backup operation on each state.
+  * Each backup updates the value of one state based on the values of all possible successor states and their probabilities of occurring.
+  * Full backups are closely related to Bellman equations: they are little more than these equations turned into assignment statements.
+  * When the backups no longer result in any changes in value, convergence has occurred to values that satisfy the corresponding Bellman equation.
+  * Just as there are four primary value functions (vπ, v∗, qπ, and q∗), there are four corresponding Bellman equations and four corresponding full backups.
+  * An intuitive view of the operation of backups is given by backup diagrams.
+* DP methods and almost all reinforcement learning methods, can be gained by viewing them as **generalized policy iteration (GPI)**.
+* **GPI** is the general idea of two interacting processes revolving around an approximate policy and an approximate value function.
+  * One process takes the policy as given and performs some form of policy evaluation, changing the value function to be more like the true value function for the policy.
+  * The other process takes the value function as given and performs some form of policy improvement, changing the policy to make it better, assuming that the value function is its 
+    value function.
+* Although each process changes the basis for the other, overall they work together to find a joint solution: **a policy and value function that are unchanged by either process and, 
+consequently, are optimal.**
+* In some cases, GPI can be proved to converge, most notably for the classical DP methods.
+* In other cases convergence has not been proved, but still the idea of GPI improves our understanding of the methods.
+* It is not necessary to perform DP methods in complete sweeps through the state set.
+* Asynchronous DP methods are in-place iterative methods that back up states in an arbitrary order, perhaps stochastically determined and using out-of-date information. Many of these methods can be viewed as fine-grained forms of GPI.
+* Special property of DP methods: All of them update estimates of the values of states based on estimates of the values of successor states. That is, they update estimates on the basis of other estimates **(bootstrapping)**.
+* Many reinforcement learning methods perform bootstrapping, even those that do not require, as DP requires, a complete and accurate model of the environment.
+* In the next chapter we explore reinforcement learning methods that do not require a model and do not bootstrap. In the chapter after that we explore methods that do not require
+a model but do bootstrap.
 
 ## 5 Monte Carlo Methods 
 * method for solving finite Markov decision problems.
 * Monte Carlo methods don’t require a model **(no model)** and are conceptually simple, but are not suited for step-by-step incremental computation **(not incremental)**.
+* methods that do not require a model and do not bootstrap.
 ### 5.1 Monte Carlo Prediction
 ### 5.2 Monte Carlo Estimation of Action Values 
 ### 5.3 Monte Carlo Control 
@@ -269,7 +296,8 @@ generally.
 
 ## 6 Temporal-Difference Learning 
 * method for solving finite Markov decision problems
-* Temporal-difference methods require **no model** and are **fully incremental**, but are more **complex** to analyze. 
+* Temporal-difference methods require **no model** and are **fully incremental**, but are more **complex** to analyze.
+* methods that do not require a model but do bootstrap.
 ### 6.1 TD Prediction 
 ### 6.2 Advantages of TD Prediction Methods 
 ### 6.3 Optimality of TD(0) 
