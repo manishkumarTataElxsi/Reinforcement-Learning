@@ -58,20 +58,14 @@ by themselves to be especially well suited to reinforcement learning problems.
 do not appeal to value functions. These methods search in spaces of policies
 defined by a collection of numerical parameters. They estimate the directions
 the parameters should be adjusted in order to most rapidly improve a policy’s
-performance. Unlike evolutionary methods, however, they produce these estimates while the agent is interacting with its environment and so can take
+performance. Unlike evolutionary methods, however, they produce these estimates while the agent is interacting with its environment and so can take
 advantage of the details of individual behavioral interactions. Methods like
 this, called policy gradient methods, have proven useful in many problems, and
 some of the simplest reinforcement learning methods fall into this category. In
-fact, some of these methods take advantage of value function estimates to improve their gradient estimates. Overall, the distinction between policy gradient
+fact, some of these methods take advantage of value function estimates to improve their gradient estimates. Overall, the distinction between policy gradient
 methods and other methods we include as reinforcement learning methods is
 not sharply defined.
-* Reinforcement learning’s connection to optimization methods deserves some
-additional comment because it is a source of a common misunderstanding.
-When we say that a reinforcement learning agent’s goal is to maximize a numerical reward signal, we of course are not insisting that the agent has to
-actually achieve the goal of maximum reward. Trying to maximize a quantity
-does not mean that that quantity is ever maximized. The point is that a reinforcement learning agent is always trying to increase the amount of reward
-it receives. Many factors can prevent it from achieving the maximum, even if
-one exists. In other words, optimization is not the same a optimality.
+* Reinforcement learning’s connection to **optimization methods** deserves some additional comment because it is a source of a common **misunderstanding**. When we say that a reinforcement learning agent’s **goal is to maximize a numerical reward signal**, we of course are **not insisting that the agent has to actually achieve the goal of maximum reward**. Trying to maximize a quantity does not mean that that quantity is ever maximized. The point is that a reinforcement learning agent is always trying to increase the amount of reward it receives. Many factors can prevent it from achieving the maximum, even if one exists. In other words, **optimization is not the same a optimality**.
 
 ### 1.5 An Extended Example: Tic-Tac-Toe 
 
@@ -176,44 +170,24 @@ broken randomly. An alternative that has a similar effect is to add a verysmall 
 * The greedy actions are those that look best at present, but some of the other actions may actually be better. ε-greedy action selection forces the non-greedy actions to be tried, but indiscriminately, with no preference for those that are nearly greedy or particularly uncertain. It would be better to select among the non-greedy actions according to their potential for actually being optimal, taking into account both how close their estimates are to being maximal and the uncertainties in those estimates. One effective way of doing this is to select actions as
 
 <div align="center">
-action = argmax(Q(a) + c * sqrt(ln(t) / N(a)))
+A<sub>t</sub> = argmax<sub>a</sub>(Q(a) + c * sqrt(ln(t) / N(a)))
 </div>
   
-where ln t denotes the natural logarithm of t (the number that e ≈ 2.71828
-would have to be raised to in order to equal t), and the number c > 0 controls
-the degree of exploration. If Nt(a) = 0, then a is considered to be a maximizing
-action.
-The idea of this upper confidence bound (UCB) action selection is that the
-square-root term is a measure of the uncertainty or variance in the estimate
-of a’s value. The quantity being max’ed over is thus a sort of upper bound
-on the possible true value of action a, with the c parameter determining the
-confidence level. Each time a is selected the uncertainty is presumably reduced;
-Nt(a) is incremented and, as it appears in the denominator of the uncertainty
-term, the term is decreased. On the other hand, each time an action other a is
-selected t is increased; as it appears in the numerator the uncertainty estimate
-is increased. The use of the natural logarithm means that the increase gets
-smaller over time, but is unbounded; all actions will eventually be selected, but
-42 CHAPTER 2. MULTI-ARM BANDITS
-�-greedy � = 0.1
-UCB c = 2
-Average
-reward
-Steps
-Figure 2.3: Average performance of UCB action selection on the 10-armed
-testbed. As shown, UCB generally performs better that ε-greedy action selection, except in the first n plays, when it selects randomly among the as-yetunplayed actions. UCB with c = 1 would perform even better but would not
-show the prominent spike in performance on the 11th play. Can you think of
-an explanation of this spike?
-as time goes by it will be a longer wait, and thus a lower selection frequency,
-for actions with a lower value estimate or that have already been selected more
-times.
-Results with UCB on the 10-armed testbed are shown in Figure 2.3. UCB
-will often perform well, as shown here, but is more difficult than ε-greedy
-to extend beyond bandits to the more general reinforcement learning settings
-considered in the rest of this book. One difficulty is in dealing with nonstationary problems; something more complex than the methods presented in
-Section 2.4 would be needed. Another difficulty is dealing with large state
-spaces, particularly function approximation as developed in Part III of this
-book. In these more advanced settings there is currently no known practical
-way of utilizing the idea of UCB action selection.
+  * where c > 0 controls the degree of exploration. 
+  * If Nt(a) = 0, then a is considered to be a maximizing action.
+    
+* The **idea of this upper confidence bound (UCB) action selection** is that **the square-root term is a measure of the uncertainty or variance in the estimate of a’s value**.
+  * The quantity being max’ed over is thus a sort of **upper bound on the possible true value of action a**, with the **c parameter determining the confidence level**.
+  * Each time a is selected the uncertainty is presumably reduced; Nt(a) is incremented and, as it appears in the denominator of the uncertainty term, the term is decreased.
+  * On the other hand, each time an action other a is selected t is increased; as it appears in the numerator the uncertainty estimate is increased.
+  * The use of the natural logarithm means that the increase gets smaller over time, but is unbounded; all actions will eventually be selected, but as time goes by it will be a longer 
+    wait, and thus a lower selection frequency, for actions with a lower value estimate or that have already been selected more times.
+
+Figure 2.3: Average performance of UCB action selection on the 10-armed testbed. As shown, UCB generally performs better that ε-greedy action selection, except in the first n plays, when it selects randomly among the as-yet unplayed actions. UCB with c = 1 would perform even better but would not show the prominent spike in performance on the 11th play. Can you think of an explanation of this spike?
+
+* Results with UCB on the 10-armed testbed are shown in Figure 2.3. UCB will often perform well, as shown here, but is more difficult than ε-greedy to extend beyond bandits to the more general reinforcement learning settings considered in the rest of this book.
+* One difficulty is in dealing with nonstationary problems; something more complex than the methods presented in Section 2.4 would be needed. Another difficulty is dealing with large state spaces, particularly function approximation as developed in Part III of this book. In these more advanced settings there is currently no known practical way of utilizing the idea of UCB action selection.
+  
 ### 2.7 Gradient Bandits
 * We have seen methods that estimate action values and use those estimates to select actions.(a good approach, but it is not the only one possible.)
 * Now, we consider learning a numerical preference **H<sub>t</sub>(a)** for each action a.
