@@ -173,16 +173,11 @@ broken randomly. An alternative that has a similar effect is to add a verysmall 
     * Limited data: The agent has only observed a limited number of state-action transitions and their corresponding rewards. As a result, its estimates of the action values are based on a small sample of data and are therefore uncertain.
     * Stochasticity of the environment: The environment may be inherently stochastic, meaning that the same action in the same state can lead to different outcomes. This stochasticity introduces further uncertainty into the action value estimates.
     
-* The greedy actions are those that look best at present, but some of the other actions may actually be better. ε-greedy action selection forces the non-greedy actions to be tried, but indiscriminately, with no preference for those that are
-nearly greedy or particularly uncertain. It would be better to select among
-the non-greedy actions according to their potential for actually being optimal,
-taking into account both how close their estimates are to being maximal and
-the uncertainties in those estimates. One effective way of doing this is to select
-actions as
+* The greedy actions are those that look best at present, but some of the other actions may actually be better. ε-greedy action selection forces the non-greedy actions to be tried, but indiscriminately, with no preference for those that are nearly greedy or particularly uncertain. It would be better to select among the non-greedy actions according to their potential for actually being optimal, taking into account both how close their estimates are to being maximal and the uncertainties in those estimates. One effective way of doing this is to select actions as
 
 <div align="center">
 action = argmax(Q(a) + c * sqrt(ln(t) / N(a)))
-<div>
+</div>
   
 where ln t denotes the natural logarithm of t (the number that e ≈ 2.71828
 would have to be raised to in order to equal t), and the number c > 0 controls
