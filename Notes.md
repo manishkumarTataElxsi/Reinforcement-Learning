@@ -249,7 +249,8 @@ way of utilizing the idea of UCB action selection.
 
 ## 3 Finite Markov Decision Processes (RL problems in terms of optimal control of Markov decision processes)
 * The general problem formulation that is—**finite markov decision processes**—and its main ideas including Bellman equations and value functions.
-* 
+* any method that is suited to solving this problem we consider to be a reinforcement learning method.
+
 ### 3.1 The Agent–Environment Interface 
 ###  3.2 Goals and Rewards
 ### 3.3 Returns 
