@@ -285,7 +285,15 @@ generally.
 ## 4 Dynamic Programming 
 * method for solving finite Markov decision problems
 * Dynamic programming methods are well developed mathematically, but **require a complete and accurate model of the environment**.
-* 
+* DP refers to a collection of algorithms that can be used to compute optimal policies given a perfect model of the environment as a Markov decision process (MDP).
+* As we assume that the environment is a finite MDP i.e. its state, action, and reward sets, S,A(s), and R, for s ∈ S, are finite, and that its dynamics are given by a set of
+probabilities **p(s', r|s, a)**, for all s ∈ S, a ∈ A(s), r ∈ R, and $s' ∈ S^{+} (S^{+}$ is a terminal state if the problem is episodic).
+* Although DP ideas can be applied to problems with continuous state and action spaces, exact solutions are possible only in special cases.
+* A common way of obtaining approximate solutions for tasks with continuous states and actions is to quantize the state and action spaces(Divide the continuous state/action space into a finite number of discrete states/actions) and then apply finite-state DP methods.
+* The **key idea of DP**, and of reinforcement learning generally, is the **use of value functions to organize and structure the search for good policies**.
+* We will see how DP can be used to compute the value functions defined in previous chapter. As discussed there, we can easily obtain optimal policies once we have found the optimal value functions, $v{∗} or q^{∗}$, which satisfy the Bellman optimality equations:
+* We will see, DP algorithms are obtained by turning Bellman equations such as these into assignments, that is, into update rules for improving approximations of the desired value functions.
+
 ### 4.1 Policy Evaluation 
 ### 4.2 Policy Improvement 
 ### 4.3 Policy Iteration 
@@ -293,6 +301,17 @@ generally.
 ### 4.5 Asynchronous Dynamic Programming
 ### 4.6 Generalized Policy Iteration 
 ### 4.7 Efficiency of Dynamic Programming 
+* DP may **not be practical for very large problems**, but **compared with other methods for solving MDP**s, DP methods are actually **quite efficient**.
+* The **(worst case) time** DP methods take **to find an optimal policy is polynomial** in the number of states and actions.
+* If n and m denote the number of states and actions, this means that a DP method takes a number of computational operations that is less than some polynomial function of n and m.
+* A DP method is **guaranteed to find an optimal policy in polynomial time** even though the total number of (deterministic) policies **is mn**.
+* In this sense, DP is **exponentially faster than any direct search** in policy space could be, because direct search would have to exhaustively examine each policy to provide the same guarantee.
+* Linear programming methods can also be used to solve MDPs, and in some cases their worst-case convergence guarantees are better than those of DP methods. But linear programming methods become impractical at a much smaller number of states than do DP methods (by a factor of about 100).
+* For the largest problems, only DP methods are feasible.
+* DP is sometimes thought to be of limited applicability because of the curse of dimensionality (Bellman, 1957a), the fact that the number of states often grows exponentially with the number of state variables. Large state sets do create difficulties, but these are inherent difficulties of the problem, not of DP as a solution method. In fact, DP is comparatively better suited to handling large state spaces than competing methods such as direct search and linear programming.
+* In practice, DP methods can be used with today’s computers to solve MDPs with millions of states. Both policy iteration and value iteration are widely used, and it is not clear which, if either, is better in general. In practice, these methods usually converge much faster than their theoretical worst-case
+run times, particularly if they are started with good initial value functions or policies.
+* On problems with **large state spaces**, **asynchronous DP methods are often preferred**. To complete even one sweep of a synchronous method requires computation and memory for every state. For some problems, even this much memory and computation is impractical, yet the problem is still potentially solvable because only a relatively few states occur along optimal solution trajectories. Asynchronous methods and other variations of GPI can be applied in such cases and may find good or optimal policies much faster than synchronous methods can.
 ### 4.8 Summary 
 * The basic ideas and algorithms of **dynamic programming** as they relate **to solving finite MDPs**.
 * **Policy evaluation** refers to the (typically) **iterative computation of the value functions for a given policy**.
@@ -382,6 +401,7 @@ a model but do bootstrap.
 *  The approximate methods only find approximate solutions, but which in return can be applied effectively to much larger problems.
 *  
 ## 9 On-policy Approximation of Action Values(reinforcement learning systems that simultaneously learn by trial and error, learn a model of the environment, and use the model for planning)
+* The methods are applicable to continuous problems and are a significant extension of DP approach.
 
 ### 9.1 Value Prediction with Function Approximation 
 ### 9.2 Gradient-Descent Methods
