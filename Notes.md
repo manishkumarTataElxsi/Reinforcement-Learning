@@ -300,6 +300,27 @@ probabilities **p(s', r|s, a)**, for all s ∈ S, a ∈ A(s), r ∈ R, and $s' �
 ### 4.4 Value Iteration 
 ### 4.5 Asynchronous Dynamic Programming
 ### 4.6 Generalized Policy Iteration 
+* Policy iteration consists of two simultaneous, interacting processes:
+  *  one making the value function consistent with the current policy (policy evaluation),
+  *  the other making the policy greedy with respect to the current value function (policy improvement).
+* In policy iteration, these two processes alternate, each completing before the other begins, but this is not really necessary.
+* In value iteration, for example, only a single iteration of policy evaluation is performed in between each policy improvement.
+* In asynchronous DP methods, the evaluation and improvement processes are interleaved at an even finer grain.
+* In some cases a single state is updated in one process before returning to the other. As long as both processes continue to update all states, the ultimate result is typically the same—convergence to the optimal value function and an optimal policy.
+* Generalized policy iteration (GPI) : **the general idea of policy evaluation and policy improvement processes**.
+*  Almost all RL methods are well described as GPI. That is, all have identifiable policies and value functions, with the policy always being improved with respect to the value function and the value function always being driven toward the value function for the policy. This overall schema for GPI is:
+
+    
+* It is easy to see that if both the evaluation process and the improvement process stabilize, that is, no longer produce changes, then the value function and policy must be optimal.
+* The value function stabilizes only when it is consistent with the current policy, and the policy stabilizes only when it is greedy with respect to the current value function. Thus, both processes stabilize only when a policy has been found that is greedy with respect to its own evaluation function. This implies that the Bellman optimality equation holds, and
+thus that the policy and the value function are optimal.
+The evaluation and improvement processes in GPI can be viewed as both
+competing and cooperating. They compete in the sense that they pull in opposing directions. Making the policy greedy with respect to the value function
+typically makes the value function incorrect for the changed policy, and making the value function consistent with the policy typically causes that policy no
+longer to be greedy. In the long run, however, these two processes interact to
+find a single joint solution: the optimal value function and an optimal policy.
+One might also think of the interaction between the evaluation and improvement processes in GPI in terms of two constraints or goals—for example,
+as two lines in two-dimensional space
 ### 4.7 Efficiency of Dynamic Programming 
 * DP may **not be practical for very large problems**, but **compared with other methods for solving MDP**s, DP methods are actually **quite efficient**.
 * The **(worst case) time** DP methods take **to find an optimal policy is polynomial** in the number of states and actions.
