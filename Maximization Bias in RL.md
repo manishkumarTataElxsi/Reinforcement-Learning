@@ -1,4 +1,4 @@
-#Maximization Bias
+# Maximization Bias
 * It refers to the tendency of Q-learning algorithms to overestimate action values due to the **max** operator used in action selection. This bias arises when estimating the expected return, leading to overly optimistic Q-values and suboptimal policy learning.
 * Why Does maximization bias occur?
   * Q-learning update rule:
