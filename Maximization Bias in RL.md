@@ -5,5 +5,24 @@
 
     **Q(s,a) <--- Q(s,a) + alpha[r + gamma * max_{a'} Q(s',a') - Q(s,a)]**
 
-    As here the next state's Q-values are approximations(often learned from limited experiences), the **max** operator tends to select actions with overestimated values due to random noise or estimation errors. Overtime , this results in a bias where Q-values become systematically overestimated, leading to poor policy decisions.
+    As here the next state's Q-values are approximations(often learned from limited experiences), the **max** operator tends to select actions with overestimated values due to random noise or estimation errors. Overtime, this results in a bias where Q-values become systematically overestimated, leading to poor policy decisions.
+
+* Effects of Maximization Bias:
+   * Overestimation of Q-values: the agent may learn policies based on inflated action values.
+   * Suboptimal Action Selection: The agent might repeatedly choose suboptimal actions because it believes they have a higher reward than they actually do.
+   * Slower Convergence: The learning process can take longer due to incorrect value estimates.
+* How to mitigate Maximization Bias?
+  * Double Q-learning: instead of using single Q-network, two separate Q-netwroks are maintained:
+    * One netwrok selects the action :
+
+      **a^{*} = arg max Q_{1}(s', a)**
+      
+    * the other one evaluate the selected action:
+
+       **Q_{2}(s', a*) **
+
+    * the update is done using Q_{2}, reducing overestimation.
+   
+       **Q_{1} (s,a) <--- Q_{1} (s,a) + alpha[r + gamma * Q_{2} (s',max_{a'} Q_{1}(s',a')) - Q_{1}(s,a)]**
+      
     
