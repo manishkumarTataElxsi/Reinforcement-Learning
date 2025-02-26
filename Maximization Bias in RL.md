@@ -23,7 +23,9 @@
 
     * the update is done using Q_{2}, reducing overestimation.
    
-       **Q_{1} (s,a) <--- Q_{1} (s,a) + alpha[r + gamma * Q_{2} (s',max_{a'} Q_{1}(s',a')) - Q_{1}(s,a)]**  http://papers.nips.cc/paper/3964-double-q-learning
+       **Q_{1} (s,a) <--- Q_{1} (s,a) + alpha[r + gamma * Q_{2} (s',max_{a'} Q_{1}(s',a')) - Q_{1}(s,a)]** 
+
+        https://proceedings.neurips.cc/paper_files/paper/2010/file/091d584fced301b442654dd8c23b3fc9-Paper.pdf
 
   * Another way is **Self correcting Q-learning** https://arxiv.org/pdf/2012.01100
       
